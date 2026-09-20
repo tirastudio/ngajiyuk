@@ -22,19 +22,19 @@ export const BookmarksModal: React.FC<BookmarksModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in">
-      <div className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl border border-stone-200 flex flex-col max-h-[85vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
+      <div className="bg-white dark:bg-stone-900 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl border border-stone-200 dark:border-stone-800 flex flex-col max-h-[85vh] transition-colors">
         {/* Header */}
-        <div className="p-5 border-b border-stone-200 flex items-center justify-between">
+        <div className="p-5 border-b border-stone-200 dark:border-stone-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 flex items-center justify-center">
               <BookmarkIcon className="w-5 h-5 fill-current" />
             </div>
             <div>
-              <h3 className="font-bold text-stone-900 text-base">
+              <h3 className="font-bold text-stone-900 dark:text-stone-100 text-base">
                 Daftar Bookmark Ayat
               </h3>
-              <p className="text-xs text-stone-500">
+              <p className="text-xs text-stone-500 dark:text-stone-400">
                 {bookmarks.length} ayat tersimpan
               </p>
             </div>
@@ -44,7 +44,7 @@ export const BookmarksModal: React.FC<BookmarksModalProps> = ({
             {bookmarks.length > 0 && (
               <button
                 onClick={onClearAll}
-                className="text-xs text-red-600 hover:text-red-700 font-semibold p-1.5"
+                className="text-xs text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-semibold p-1.5 cursor-pointer"
                 title="Hapus Semua Bookmark"
               >
                 Hapus Semua
@@ -52,7 +52,7 @@ export const BookmarksModal: React.FC<BookmarksModalProps> = ({
             )}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-stone-100"
+              className="p-1.5 rounded-xl text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -62,10 +62,10 @@ export const BookmarksModal: React.FC<BookmarksModalProps> = ({
         {/* Content list */}
         <div className="p-5 overflow-y-auto space-y-3 flex-1">
           {bookmarks.length === 0 ? (
-            <div className="py-12 text-center text-stone-500 space-y-2">
-              <BookmarkIcon className="w-12 h-12 mx-auto text-stone-300" />
-              <p className="font-bold text-stone-700 text-sm">Belum ada ayat yang ditandai</p>
-              <p className="text-xs text-stone-400 max-w-xs mx-auto">
+            <div className="py-12 text-center text-stone-500 dark:text-stone-400 space-y-2">
+              <BookmarkIcon className="w-12 h-12 mx-auto text-stone-300 dark:text-stone-600" />
+              <p className="font-bold text-stone-700 dark:text-stone-300 text-sm">Belum ada ayat yang ditandai</p>
+              <p className="text-xs text-stone-400 dark:text-stone-500 max-w-xs mx-auto">
                 Saat membaca surah, klik ikon bookmark di samping ayat untuk menyimpannya ke daftar ini.
               </p>
             </div>
@@ -73,27 +73,27 @@ export const BookmarksModal: React.FC<BookmarksModalProps> = ({
             bookmarks.map((bm) => (
               <div
                 key={bm.id}
-                className="p-4 rounded-2xl border border-stone-200/80 hover:border-emerald-400 bg-stone-50/50 hover:bg-white transition-all space-y-2 group"
+                className="p-4 rounded-2xl border border-stone-200/80 dark:border-stone-800 hover:border-emerald-400 dark:hover:border-emerald-600 bg-stone-50/50 dark:bg-stone-800/40 hover:bg-white dark:hover:bg-stone-800 transition-all space-y-2 group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full">
+                  <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-950/80 px-2.5 py-0.5 rounded-full">
                     QS. {bm.surahName} : {bm.ayahNumber}
                   </span>
 
                   <button
                     onClick={() => onRemoveBookmark(bm.id)}
-                    className="text-stone-400 hover:text-red-600 p-1 transition-colors"
+                    className="text-stone-400 dark:text-stone-500 hover:text-red-600 dark:hover:text-red-400 p-1 transition-colors cursor-pointer"
                     title="Hapus bookmark ini"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <p className="font-arabic text-right text-stone-900 text-base leading-relaxed line-clamp-1" dir="rtl">
+                <p className="font-arabic text-right text-stone-900 dark:text-stone-100 text-base leading-relaxed line-clamp-1" dir="rtl">
                   {bm.arabSnippet}...
                 </p>
 
-                <p className="text-xs text-stone-600 line-clamp-2 italic">
+                <p className="text-xs text-stone-600 dark:text-stone-300 line-clamp-2 italic">
                   "{bm.translationSnippet}..."
                 </p>
 
@@ -103,7 +103,7 @@ export const BookmarksModal: React.FC<BookmarksModalProps> = ({
                       onSelectBookmark(bm.surahNumber, bm.ayahNumber);
                       onClose();
                     }}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 cursor-pointer"
                   >
                     <span>Lanjutkan Membaca</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

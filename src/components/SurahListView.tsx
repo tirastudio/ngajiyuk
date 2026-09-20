@@ -132,16 +132,16 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
       </section>
 
       {/* Navigation Mode: 114 Surah vs 30 Juz */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 border-b border-stone-200/80 pb-4">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 border-b border-stone-200/80 dark:border-stone-800 pb-4">
         {/* Tab switchers */}
-        <div className="inline-flex p-1 bg-stone-100 rounded-2xl border border-stone-200/70 self-start">
+        <div className="inline-flex p-1 bg-stone-100 dark:bg-stone-800/80 rounded-2xl border border-stone-200/70 dark:border-stone-700 self-start">
           <button
             id="tab-view-surah"
             onClick={() => setActiveTab('surah')}
             className={`px-5 py-2 rounded-xl text-sm font-bold transition-all ${
               activeTab === 'surah'
-                ? 'bg-white text-emerald-800 shadow-xs'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-white dark:bg-stone-900 text-emerald-800 dark:text-emerald-400 shadow-xs'
+                : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
             }`}
           >
             114 Surah
@@ -151,8 +151,8 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
             onClick={() => setActiveTab('juz')}
             className={`px-5 py-2 rounded-xl text-sm font-bold transition-all ${
               activeTab === 'juz'
-                ? 'bg-white text-emerald-800 shadow-xs'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-white dark:bg-stone-900 text-emerald-800 dark:text-emerald-400 shadow-xs'
+                : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
             }`}
           >
             30 Juz
@@ -161,7 +161,7 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
 
         {/* Real-time Search Box */}
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-stone-400 dark:text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             id="input-surah-search"
             type="text"
@@ -172,12 +172,12 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
                 ? 'Cari nama surah (e.g. Al-Kahf, Yasin, 67)...'
                 : 'Cari Juz 1 - 30...'
             }
-            className="w-full pl-10 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-2xl text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white transition-all"
+            className="w-full pl-10 pr-4 py-2.5 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl text-sm text-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:bg-white dark:focus:bg-stone-900 transition-all"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-700 p-1"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 p-1 cursor-pointer"
             >
               Hapus
             </button>
@@ -191,10 +191,10 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
           <button
             id="filter-all"
             onClick={() => setRevelationFilter('all')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
               revelationFilter === 'all'
                 ? 'bg-emerald-700 text-white'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
             }`}
           >
             Semua (114)
@@ -202,10 +202,10 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
           <button
             id="filter-popular"
             onClick={() => setRevelationFilter('popular')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
               revelationFilter === 'popular'
                 ? 'bg-emerald-700 text-white'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
             }`}
           >
             <Star className="w-3.5 h-3.5 text-amber-500" />
@@ -214,10 +214,10 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
           <button
             id="filter-makkiyah"
             onClick={() => setRevelationFilter('Makkiyah')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
               revelationFilter === 'Makkiyah'
                 ? 'bg-emerald-700 text-white'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
             }`}
           >
             Makkiyah
@@ -225,10 +225,10 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
           <button
             id="filter-madaniyah"
             onClick={() => setRevelationFilter('Madaniyah')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
               revelationFilter === 'Madaniyah'
                 ? 'bg-emerald-700 text-white'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
             }`}
           >
             Madaniyah
@@ -244,27 +244,27 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
               key={surah.number}
               id={`surah-card-${surah.number}`}
               onClick={() => onSelectSurah(surah.number)}
-              className="bg-white rounded-2xl p-4 sm:p-5 border border-stone-200/80 hover:border-emerald-500/50 hover:shadow-md transition-all cursor-pointer group flex items-center justify-between gap-3 relative overflow-hidden"
+              className="bg-white dark:bg-stone-900 rounded-2xl p-4 sm:p-5 border border-stone-200/80 dark:border-stone-800 hover:border-emerald-500/50 hover:shadow-md transition-all cursor-pointer group flex items-center justify-between gap-3 relative overflow-hidden"
             >
               <div className="flex items-center gap-3.5">
                 {/* Number Badge with Islamic Diamond Style */}
-                <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-800 font-bold flex items-center justify-center text-sm border border-emerald-200/70 group-hover:bg-emerald-600 group-hover:text-white transition-colors shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-400 font-bold flex items-center justify-center text-sm border border-emerald-200/70 dark:border-emerald-800/70 group-hover:bg-emerald-600 group-hover:text-white transition-colors shrink-0">
                   {surah.number}
                 </div>
 
                 <div>
-                  <h3 className="font-bold text-stone-900 text-base group-hover:text-emerald-700 transition-colors flex items-center gap-2">
+                  <h3 className="font-bold text-stone-900 dark:text-stone-100 text-base group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-2">
                     {surah.transliteration}
                   </h3>
-                  <p className="text-xs text-stone-500 line-clamp-1">
+                  <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-1">
                     {surah.translation}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[11px] font-medium text-stone-400">
+                    <span className="text-[11px] font-medium text-stone-400 dark:text-stone-500">
                       {surah.numberOfAyahs} Ayat
                     </span>
-                    <span className="text-stone-300">•</span>
-                    <span className="text-[11px] font-semibold text-emerald-700">
+                    <span className="text-stone-300 dark:text-stone-600">•</span>
+                    <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400">
                       {surah.revelation}
                     </span>
                   </div>
@@ -273,7 +273,7 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
 
               {/* Arabic Name */}
               <div className="text-right">
-                <span className="font-arabic text-2xl text-stone-700 group-hover:text-emerald-800 transition-colors leading-loose">
+                <span className="font-arabic text-2xl text-stone-700 dark:text-stone-200 group-hover:text-emerald-800 dark:group-hover:text-emerald-300 transition-colors leading-loose">
                   {surah.name}
                 </span>
               </div>
@@ -281,9 +281,9 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
           ))}
 
           {filteredSurahs.length === 0 && (
-            <div className="col-span-full py-12 text-center text-stone-500">
-              <BookOpen className="w-12 h-12 mx-auto text-stone-300 mb-3" />
-              <p className="text-base font-semibold text-stone-700">Tidak ada surah yang cocok</p>
+            <div className="col-span-full py-12 text-center text-stone-500 dark:text-stone-400">
+              <BookOpen className="w-12 h-12 mx-auto text-stone-300 dark:text-stone-600 mb-3" />
+              <p className="text-base font-semibold text-stone-700 dark:text-stone-300">Tidak ada surah yang cocok</p>
               <p className="text-sm">Coba kata kunci lain atau bersihkan pencarian.</p>
             </div>
           )}
@@ -298,33 +298,33 @@ export const SurahListView: React.FC<SurahListViewProps> = ({
               key={juz.index}
               id={`juz-card-${juz.index}`}
               onClick={() => onSelectSurah(juz.start.surahNumber, juz.start.ayahNumber)}
-              className="bg-white rounded-2xl p-5 border border-stone-200/80 hover:border-emerald-500/50 hover:shadow-md transition-all cursor-pointer group"
+              className="bg-white dark:bg-stone-900 rounded-2xl p-5 border border-stone-200/80 dark:border-stone-800 hover:border-emerald-500/50 hover:shadow-md transition-all cursor-pointer group"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="w-10 h-10 rounded-xl bg-amber-50 text-amber-900 border border-amber-200/80 font-bold flex items-center justify-center text-sm">
+                <span className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-900 dark:text-amber-300 border border-amber-200/80 dark:border-amber-800/80 font-bold flex items-center justify-center text-sm">
                   {juz.index}
                 </span>
-                <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
+                <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                   {juz.name}
                 </span>
               </div>
 
-              <div className="space-y-2 text-xs text-stone-600">
+              <div className="space-y-2 text-xs text-stone-600 dark:text-stone-300">
                 <div className="flex items-center justify-between">
-                  <span className="text-stone-400">Mulai:</span>
-                  <span className="font-semibold text-stone-800">
+                  <span className="text-stone-400 dark:text-stone-500">Mulai:</span>
+                  <span className="font-semibold text-stone-800 dark:text-stone-200">
                     QS. {juz.start.surahName} : {juz.start.ayahNumber}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-stone-400">Sampai:</span>
-                  <span className="font-semibold text-stone-800">
+                  <span className="text-stone-400 dark:text-stone-500">Sampai:</span>
+                  <span className="font-semibold text-stone-800 dark:text-stone-200">
                     QS. {juz.end.surahName} : {juz.end.ayahNumber}
                   </span>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-emerald-700 group-hover:text-emerald-800">
+              <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs font-semibold text-emerald-700 dark:text-emerald-400 group-hover:text-emerald-800 dark:group-hover:text-emerald-300">
                 <span>Buka Awal Juz Ini</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>

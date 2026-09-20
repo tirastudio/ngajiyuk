@@ -12,6 +12,7 @@ import { ShareModal } from './components/ShareModal';
 import { AudioPlayerBar } from './components/AudioPlayerBar';
 import { DashboardView } from './components/DashboardView';
 import { AuthModal } from './components/AuthModal';
+import { Footer } from './components/Footer';
 import { Bookmark, LastRead, Ayah } from './types/quran';
 import { UserProfile } from './types/auth';
 import { getCurrentUser, setCurrentUser as persistCurrentUser } from './utils/authStore';
@@ -53,6 +54,42 @@ export function App() {
       return [];
     }
   });
+
+  // Theme state ('light' | 'dark')
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    try {
+      const saved = localStorage.getItem('ngajiyuk_theme') || localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    } catch {
+      // fallback
+    }
+    return 'light';
+  });
+
+  // Apply theme class to <html> and sync localStorage
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const root = document.documentElement;
+      if (theme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      try {
+        localStorage.setItem('ngajiyuk_theme', theme);
+        localStorage.setItem('theme', theme);
+      } catch {
+        // ignore
+      }
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   // Modal states
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
@@ -239,7 +276,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100/70 text-stone-900 font-sans flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
+    <div className="min-h-screen bg-stone-100/70 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans flex flex-col selection:bg-emerald-100 selection:text-emerald-900 dark:selection:bg-emerald-900 dark:selection:text-emerald-100 transition-colors duration-200">
       {/* Top Navigation */}
       <Navbar
         activeTab={activeTab}
@@ -260,6 +297,8 @@ export function App() {
         }}
         currentUser={currentUser}
         onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Main Container - Optimized for small mobile screens */}
@@ -286,6 +325,8 @@ export function App() {
             onPlayAyahAudio={handlePlayAyahAudio}
             currentPlayingAyahId={currentAyahId}
             isPlayingAudio={isPlayingAudio}
+            theme={theme}
+            onToggleTheme={handleToggleTheme}
           />
         )}
 
@@ -375,20 +416,24 @@ export function App() {
         onLoginSuccess={handleLoginSuccess}
       />
 
-      {/* Footer */}
-      <footer className="mt-auto border-t border-stone-200 bg-white/70 py-8 text-center text-xs text-stone-500 space-y-2">
-        <div className="flex items-center justify-center gap-2">
-          <span className="font-arabic text-emerald-800 text-lg">۞</span>
-          <span className="font-bold text-stone-800">ngajiyuk • Al-Qur'an & Sholat Digital Kemenag RI</span>
-          <span className="font-arabic text-emerald-800 text-lg">۞</span>
-        </div>
-        <p>
-          Teks Al-Qur'an Standar Indonesia & Terjemahan Resmi Kementerian Agama Republik Indonesia.
-        </p>
-        <p className="text-[11px] text-stone-400">
-          Dilengkapi Fitur Rekomendasi & Ringkasan Berbasis Gemini 3.8 Flash
-        </p>
-      </footer>
+      {/* Enhanced Multi-Device Footer */}
+      <Footer
+        activeTab={activeTab}
+        onSelectTab={(tab) => {
+          setActiveTab(tab);
+          setSelectedSurahNumber(null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onSelectSurah={(surahNumber, ayahNumber) => {
+          setSelectedSurahNumber(surahNumber);
+          setTargetAyahNumber(ayahNumber);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenBookmarks={() => setIsBookmarksOpen(true)}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
     </div>
   );
 }

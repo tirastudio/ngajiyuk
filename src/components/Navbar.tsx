@@ -9,6 +9,8 @@ import {
   User,
   LogIn,
   Scale,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { UserProfile } from '../types/auth';
 
@@ -24,6 +26,8 @@ interface NavbarProps {
   onJumpToAudio?: () => void;
   currentUser?: UserProfile | null;
   onOpenAuthModal?: () => void;
+  theme?: 'light' | 'dark';
+  onToggleTheme?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -36,9 +40,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   onJumpToAudio,
   currentUser,
   onOpenAuthModal,
+  theme = 'light',
+  onToggleTheme,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs">
+    <header className="sticky top-0 z-40 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 shadow-xs transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-18 gap-2">
           {/* Logo & Brand */}
@@ -52,25 +58,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-stone-900 tracking-tight text-xl sm:text-2xl lowercase">
-                  ngaji<span className="text-emerald-700">yuk</span>
+                <span className="font-extrabold text-stone-900 dark:text-stone-100 tracking-tight text-xl sm:text-2xl lowercase">
+                  ngaji<span className="text-emerald-700 dark:text-emerald-400">yuk</span>
                 </span>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/70 rounded-full">
+                <span className="hidden sm:inline-block px-2 py-0.5 text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/70 dark:border-emerald-800/60 rounded-full">
                   Kemenag RI
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Desktop Navigation Tabs - Tidied & Balanced (No Dashboard Menu) */}
-          <nav className="hidden md:flex items-center gap-1.5 bg-stone-100/90 p-1.5 rounded-2xl border border-stone-200/70 shadow-2xs">
+          {/* Desktop Navigation Tabs - Tidied & Balanced */}
+          <nav className="hidden md:flex items-center gap-1.5 bg-stone-100/90 dark:bg-stone-800/80 p-1.5 rounded-2xl border border-stone-200/70 dark:border-stone-700/80 shadow-2xs">
             <button
               id="tab-btn-quran"
               onClick={() => setActiveTab('quran')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'quran'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
+                  ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-xs'
+                  : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
               }`}
             >
               <BookOpen className="w-4 h-4" />
@@ -82,8 +88,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('sholat')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'sholat'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
+                  ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-xs'
+                  : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
               }`}
             >
               <Clock className="w-4 h-4" />
@@ -95,8 +101,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('bacaan')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'bacaan'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
+                  ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-xs'
+                  : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
               }`}
             >
               <HeartHandshake className="w-4 h-4" />
@@ -108,8 +114,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('fiqih')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'fiqih'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
+                  ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-xs'
+                  : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
               }`}
             >
               <Scale className="w-4 h-4" />
@@ -121,8 +127,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('ai')}
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'ai'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-200/60'
+                  ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-xs'
+                  : 'text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-200/60 dark:hover:bg-stone-700/60'
               }`}
             >
               <Sparkles className="w-4 h-4 text-amber-300" />
@@ -131,12 +137,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action Icons */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             {audioPlayingSurah && (
               <button
                 id="audio-indicator-btn"
                 onClick={onJumpToAudio}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium animate-pulse cursor-pointer"
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-medium animate-pulse cursor-pointer"
                 title="Audio sedang diputar"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -144,10 +150,27 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
+            {/* Dark Mode Theme Toggle Button */}
+            {onToggleTheme && (
+              <button
+                id="theme-toggle-btn"
+                onClick={onToggleTheme}
+                className="p-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-300 dark:hover:text-amber-300 dark:hover:bg-stone-800 transition-all cursor-pointer group"
+                title={theme === 'dark' ? 'Mode Malam Aktif • Klik untuk beralih ke Mode Siang' : 'Mode Siang Aktif • Klik untuk beralih ke Mode Malam (Nyaman Baca)'}
+                aria-label={theme === 'dark' ? 'Beralih ke Mode Siang' : 'Beralih ke Mode Malam'}
+              >
+                {theme === 'dark' ? (
+                  <Sun className="w-5 h-5 text-amber-400 group-hover:rotate-45 transition-transform" />
+                ) : (
+                  <Moon className="w-5 h-5 text-stone-600 group-hover:-rotate-12 transition-transform" />
+                )}
+              </button>
+            )}
+
             <button
               id="btn-search-trigger"
               onClick={onOpenSearch}
-              className="p-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-colors cursor-pointer"
+              className="p-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-300 dark:hover:text-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
               title="Cari Surah atau Ayat"
               aria-label="Cari Surah atau Ayat"
             >
@@ -157,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="btn-bookmarks-trigger"
               onClick={onOpenBookmarks}
-              className="relative p-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-colors cursor-pointer"
+              className="relative p-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-300 dark:hover:text-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
               title="Daftar Bookmark"
               aria-label="Daftar Bookmark"
             >
@@ -181,8 +204,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
                 currentUser
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-900 hover:bg-emerald-100'
-                  : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'
+                  ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-800/80 text-emerald-900 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/60'
+                  : 'bg-stone-50 dark:bg-stone-800/90 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
               }`}
               title={currentUser ? `Akun: ${currentUser.name}` : 'Masuk atau Buat Akun'}
             >
@@ -197,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </>
               ) : (
                 <>
-                  <LogIn className="w-4 h-4 text-emerald-700" />
+                  <LogIn className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                   <span className="hidden sm:inline">Masuk</span>
                 </>
               )}
@@ -206,63 +229,85 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation Bar (5 Balanced Essential Items) */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-lg">
-        <div className="grid grid-cols-5 py-2 px-1">
+      {/* Mobile Bottom Navigation Bar (6 Items with Theme Toggle) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-t border-stone-200 dark:border-stone-800 shadow-lg">
+        <div className="grid grid-cols-6 py-2 px-0.5">
           <button
             id="mobile-tab-quran"
             onClick={() => setActiveTab('quran')}
             className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeTab === 'quran' ? 'text-emerald-700 font-bold' : 'text-stone-500 hover:text-stone-800'
+              activeTab === 'quran' ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
             }`}
           >
-            <BookOpen className="w-5 h-5 mb-1" />
-            <span className="text-[10px]">Al-Qur'an</span>
+            <BookOpen className="w-4.5 h-4.5 mb-1" />
+            <span className="text-[9.5px]">Al-Qur'an</span>
           </button>
 
           <button
             id="mobile-tab-sholat"
             onClick={() => setActiveTab('sholat')}
             className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeTab === 'sholat' ? 'text-emerald-700 font-bold' : 'text-stone-500 hover:text-stone-800'
+              activeTab === 'sholat' ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
             }`}
           >
-            <Clock className="w-5 h-5 mb-1" />
-            <span className="text-[10px]">Sholat</span>
+            <Clock className="w-4.5 h-4.5 mb-1" />
+            <span className="text-[9.5px]">Sholat</span>
           </button>
 
           <button
             id="mobile-tab-bacaan"
             onClick={() => setActiveTab('bacaan')}
             className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeTab === 'bacaan' ? 'text-emerald-700 font-bold' : 'text-stone-500 hover:text-stone-800'
+              activeTab === 'bacaan' ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
             }`}
           >
-            <HeartHandshake className="w-5 h-5 mb-1" />
-            <span className="text-[10px]">Amalan</span>
+            <HeartHandshake className="w-4.5 h-4.5 mb-1" />
+            <span className="text-[9.5px]">Amalan</span>
           </button>
 
           <button
             id="mobile-tab-fiqih"
             onClick={() => setActiveTab('fiqih')}
             className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeTab === 'fiqih' ? 'text-emerald-700 font-bold' : 'text-stone-500 hover:text-stone-800'
+              activeTab === 'fiqih' ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
             }`}
           >
-            <Scale className="w-5 h-5 mb-1" />
-            <span className="text-[10px]">Fiqih</span>
+            <Scale className="w-4.5 h-4.5 mb-1" />
+            <span className="text-[9.5px]">Fiqih</span>
           </button>
 
           <button
             id="mobile-tab-ai"
             onClick={() => setActiveTab('ai')}
             className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeTab === 'ai' ? 'text-emerald-700 font-bold' : 'text-stone-500 hover:text-stone-800'
+              activeTab === 'ai' ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
             }`}
           >
-            <Sparkles className="w-5 h-5 mb-1 text-amber-500" />
-            <span className="text-[10px]">Tanya AI</span>
+            <Sparkles className="w-4.5 h-4.5 mb-1 text-amber-500" />
+            <span className="text-[9.5px]">Tanya AI</span>
           </button>
+
+          {/* Theme Toggle Button for Mobile View */}
+          {onToggleTheme && (
+            <button
+              id="mobile-tab-theme"
+              onClick={onToggleTheme}
+              className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors cursor-pointer ${
+                theme === 'dark'
+                  ? 'text-amber-400 font-bold'
+                  : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
+              }`}
+              title={theme === 'dark' ? 'Mode Malam Aktif • Klik untuk beralih ke Mode Siang' : 'Mode Siang Aktif • Klik untuk beralih ke Mode Malam'}
+              aria-label={theme === 'dark' ? 'Beralih ke Mode Siang' : 'Beralih ke Mode Malam'}
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4.5 h-4.5 mb-1 text-amber-400" />
+              ) : (
+                <Moon className="w-4.5 h-4.5 mb-1 text-stone-600 dark:text-stone-400" />
+              )}
+              <span className="text-[9.5px] font-medium">{theme === 'dark' ? 'Terang' : 'Gelap'}</span>
+            </button>
+          )}
         </div>
       </div>
     </header>
