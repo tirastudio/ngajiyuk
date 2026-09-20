@@ -52,16 +52,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-stone-900 tracking-tight text-lg sm:text-xl">
-                  Al-Qur'an <span className="text-emerald-700 font-extrabold">& Sholat</span>
+                <span className="font-extrabold text-stone-900 tracking-tight text-xl sm:text-2xl lowercase">
+                  ngaji<span className="text-emerald-700">yuk</span>
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/70 rounded-full">
                   Kemenag RI
                 </span>
               </div>
-              <p className="text-xs text-stone-500 hidden sm:block">
-                Mushaf Digital Kemenag RI • Waktu Sholat • Fiqih & Doa
-              </p>
             </div>
           </div>
 

@@ -379,7 +379,7 @@ export function App() {
       <footer className="mt-auto border-t border-stone-200 bg-white/70 py-8 text-center text-xs text-stone-500 space-y-2">
         <div className="flex items-center justify-center gap-2">
           <span className="font-arabic text-emerald-800 text-lg">۞</span>
-          <span className="font-bold text-stone-800">Al-Qur'an & Sholat Digital Kemenag RI</span>
+          <span className="font-bold text-stone-800">ngajiyuk • Al-Qur'an & Sholat Digital Kemenag RI</span>
           <span className="font-arabic text-emerald-800 text-lg">۞</span>
         </div>
         <p>
