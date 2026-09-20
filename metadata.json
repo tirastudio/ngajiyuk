@@ -1,0 +1,6 @@
+{
+  "name": "Al-Quran & Jadwal Sholat",
+  "description": "Aplikasi Al-Quran digital lengkap dengan jadwal sholat resmi Kemenag RI, dashboard pengguna, target tilawah & bookmark, AI rekomendasi, audio murottal, dan bacaan sholat.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
