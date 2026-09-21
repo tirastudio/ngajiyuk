@@ -1,6 +1,6 @@
 {
-  "name": "ngajiyuk",
-  "description": "ngajiyuk - Aplikasi Al-Qur'an digital lengkap dengan jadwal sholat resmi Kemenag RI, dashboard pengguna, target tilawah & bookmark, AI rekomendasi, audio murottal, dan bacaan sholat.",
+  "name": "Ngaji Qur'an",
+  "description": "Ngaji Qur'an - Aplikasi Al-Qur'an digital lengkap dengan jadwal sholat resmi Kemenag RI, dashboard pengguna, target tilawah & bookmark, AI rekomendasi, audio murottal, dan bacaan sholat.",
   "requestFramePermissions": ["geolocation"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

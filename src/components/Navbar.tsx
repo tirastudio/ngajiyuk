@@ -58,8 +58,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-stone-900 dark:text-stone-100 tracking-tight text-xl sm:text-2xl lowercase">
-                  ngaji<span className="text-emerald-700 dark:text-emerald-400">yuk</span>
+                <span className="font-extrabold text-stone-900 dark:text-stone-100 tracking-tight text-xl sm:text-2xl">
+                  Ngaji <span className="text-emerald-700 dark:text-emerald-400">Qur'an</span>
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200/70 dark:border-emerald-800/60 rounded-full">
                   Kemenag RI

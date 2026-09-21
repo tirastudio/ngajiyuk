@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div>
                 <h3 className="font-bold text-stone-900 dark:text-stone-100 text-lg leading-tight tracking-tight">
-                  ngajiyuk
+                  Ngaji Qur'an
                 </h3>
                 <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 block">
                   Al-Qur'an & Ibadah Digital RI
@@ -258,7 +258,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 dark:text-stone-400">
           <div className="space-y-1 text-center sm:text-left">
             <p className="font-semibold text-stone-700 dark:text-stone-300 flex items-center justify-center sm:justify-start gap-1.5 flex-wrap">
-              <span>© {new Date().getFullYear()} ngajiyuk</span>
+              <span>© {new Date().getFullYear()} Ngaji Qur'an</span>
               <span className="hidden sm:inline">•</span>
               <span>Kemenag RI Digital Experience</span>
             </p>
