@@ -13,6 +13,7 @@ import { AudioPlayerBar } from './components/AudioPlayerBar';
 import { DashboardView } from './components/DashboardView';
 import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
+import { ThemeBackground } from './components/ThemeBackground';
 import { Bookmark, LastRead, Ayah } from './types/quran';
 import { UserProfile } from './types/auth';
 import { getCurrentUser, setCurrentUser as persistCurrentUser } from './utils/authStore';
@@ -276,7 +277,10 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100/70 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans flex flex-col selection:bg-emerald-100 selection:text-emerald-900 dark:selection:bg-emerald-900 dark:selection:text-emerald-100 transition-colors duration-200">
+    <div className="min-h-screen bg-transparent text-stone-900 dark:text-stone-100 font-sans flex flex-col selection:bg-emerald-100 selection:text-emerald-900 dark:selection:bg-emerald-900 dark:selection:text-emerald-100 transition-colors duration-200 relative">
+      {/* Immersive Islamic Theme Background (Desert for Light, Lailatul Qadr for Dark) */}
+      <ThemeBackground theme={theme} />
+
       {/* Top Navigation */}
       <Navbar
         activeTab={activeTab}
